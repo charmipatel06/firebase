@@ -1,0 +1,45 @@
+<html>
+<head>
+
+
+	<script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+		apiKey: "AIzaSyC5o-tZlL5vSdF990e232VzZrfeXm6prh4",
+		authDomain: "first-5f3e4.firebaseapp.com",
+		databaseURL: "https://first-5f3e4.firebaseio.com",
+		projectId: "first-5f3e4",
+		storageBucket: "first-5f3e4.appspot.com",
+		messagingSenderId: "452752080253"
+	  };
+	  firebase.initializeApp(config);
+</script>
+
+</head>
+<body> 
+	<input type="email" id="email" >
+	<input type="password" id="password">
+	<button type="submit" onclick="run();">submit</button>
+	<script>
+	function run(){
+	var emai = document.getElementById('email').value;
+	var pass = document.getElementById('password').value;
+	alert(emai);
+	alert(pass);
+	firebase.auth().createUserWithEmailAndPassword(emai, pass)
+    .catch(function(error) {
+		  // Handle Errors here.
+		  var errorCode = error.code;
+		  var errorMessage = error.message;
+		  if (errorCode == 'auth/weak-password') {
+			alert('The password is too weak.');
+		  } else {
+			alert(errorMessage);
+		  }
+		  console.log(error);
+		});
+		}
+	</script>
+</body>
+</html>
